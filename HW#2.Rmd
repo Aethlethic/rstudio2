@@ -5,7 +5,7 @@ date: "2024-03-13"
 output: html_document
 ---
 
-## 예제1@@@@
+## 예제1
 
 ```{r}
 sqrt(2)
