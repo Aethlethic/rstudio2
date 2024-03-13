@@ -1,0 +1,41 @@
+---
+title: "HR#2_R 기본사용법"
+author: "Kim Jisoo"
+date: "2024-03-13"
+output: html_document
+---
+
+## 예제1
+
+```{r}
+sqrt(2)
+exp(5)
+log10(20)
+log(20)
+gamma(5)
+abs(-4.5)
+round(pi, 2)
+```
+
+## 예제 2
+
+```{r}
+dnorm(5, mean = 5, sd = 1)
+dexp(1, rate = 5)
+dweibull(50, 80, scale = 1.5)
+```
+##예제 3
+
+```{r}
+A <- 5
+B <- 6
+2*A + B^2
+A^5*3^B
+rm(list = ls())
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+'''{}
+dfa;lskd
+
