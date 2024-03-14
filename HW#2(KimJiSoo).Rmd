@@ -1,0 +1,100 @@
+---
+title: "HW#2(KimJiSoo)"
+author: "Kim Jisoo"
+date: "2024-03-14"
+output: html_document
+---
+
+---
+title: "HR#2_R 기본사용법"
+author: "Kim Jisoo"
+date: "2024-03-13"
+output: html_document
+---
+
+## 예제 1
+
+```{r}
+sqrt(2)
+exp(5)
+log10(20)
+log(20)
+gamma(5)
+abs(-4.5)
+round(pi, 2)
+```
+
+## 예제 2
+
+```{r}
+dnorm(5, mean = 5, sd = 1)
+dexp(1, rate = 5)
+dweibull(50, 80, scale = 1.5)
+```
+
+##예제 3
+
+```{r}
+A <- 5
+B <- 6
+2*A + B^2
+A^5*3^B
+rm(list = ls())
+```
+
+##예제 4
+
+```{r}
+dNorm <- function(x, mean, sd){
+  value <- (1 / (sd*sqrt(2*pi))) * exp(-(x-mean)^2 / 2*sd^2)
+  return(10*value)
+}
+```
+
+## 예제 5
+
+```{r}
+##(1)
+sum(1:100 * 1:100)
+##(2)
+prod(1:10)
+##(3)
+sum(cos((1:20)*pi/20))
+```
+
+## 예제 6
+
+```{r}
+mat1 <- matrix(seq(2, 18, by = 2), nrow=3)
+dimnames(mat1)[[1]] <- c("A", "B", "C")
+dimnames(mat1)[[2]] <- c("가", "나", "다")
+mat1[2,3]
+```
+
+## 예제 7
+
+```{r}
+iris$Species
+
+iris[iris$Species == 'virginica',]
+```
+
+## 예제 8
+
+```{r}
+vec1 <- iris[,3]
+vec1
+vec2 <- iris[,5]
+vec2
+new_list <- list(vec1, vec2)
+new_list
+```
+
+## 예제 9
+
+```{r}
+for(i in 1:nrow(iris)){
+  ifelse(iris[i,5] == "setosa", print(1),
+         ifelse(iris[i,5] == "versicolor", print(2), print(3)))
+}
+```
