@@ -76,7 +76,7 @@ mat1[2,3]
 ```{r}
 iris$Species
 
-iris[iris$Species == 'virginica',]
+iris[iris$Species == 'virginica']
 ```
 
 ## 예제 8
