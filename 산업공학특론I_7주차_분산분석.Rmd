@@ -97,7 +97,7 @@ for (i in 2:4){
   
 }
 
-
+legend('topright', legend = names(dat))
 ```
 
 <br>
@@ -105,7 +105,22 @@ for (i in 2:4){
 ### 2. 분산분석
 ```{r anova}
 
+##ANOVA 분석이 가능한 형태로 전처리
+install.packages('reshape')
+library(reshape)
+dat_merge <- melt(data = dat_merge, id.vars = 'cycle')
+head(dat_merge)
 
+fit <- aov(value ~ variable, data = dat_merge)
+fit
+summary(fit)
+
+
+##신뢰구간
+unique(predict(fit, dat_merge, interval = 'confidence'))
+
+par(mfrow=c(2,2))
+plot(fit)
 ```
 
 <br>
@@ -115,6 +130,22 @@ for (i in 2:4){
 (Reference: <a href="https://d1wqtxts1xzle7.cloudfront.net/71815004/abdi-HSD2010-pretty-libre.pdf?1633663014=&response-content-disposition=inline%3B+filename%3DTukeys_Honestly_Signiflcant_Difierence_H.pdf&Expires=1712988568&Signature=Nyf6xCVSgBknn2yDmEqL7XTvlu~jYNlMYpcO6c51wwhrD9iQeL6oeoxwbu-LTA~Fa90eMv8mIaE~yX7Mq2aSUOs7Rw83RP2TuXy12E0kcl8bKkQIphIOiy5BIA85N8a~NviRgroK~aDxFxV18BxIlNEJ1ip6Ptm-F9JMFJIgYlwL-sWO6Cq-ARaz2vmO2Og66H4XvaFbUe3sYGW~E7Cudt5SKsXcZV0hZPCaxDWI65Kb-zlc9ZV6YZ0zSss0lc-T--CveIq80HY1NtgeUc9umys7utoC5XGNQi1kIoWy6UMp9XHiVpwxAyEGDQy-lakcz3RF0OjzbpSfvWdeVuz17w__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA"> Abdi, H., & Williams, L. J. (2010). Tukey’s honestly significant difference (HSD) test. Encyclopedia of research design, 3(1), 1-5. </a>)
 
 ```{r posthoc}
+
+#LSD 검정
+install.packages('agricolae')
+library(agricolae)
+
+lsd_test <- LSD.test(fit, 'variable')
+lsd_test
+
+plot(lsd_test)
+
+
+#Tukey HSD 검정
+tukey_test <- TukeyHSD(fit)
+tukey_test
+
+plot(tukey_test)
 
 
 ```
